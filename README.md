@@ -1,15 +1,23 @@
 # ecommerce-redux
 
-products
-  CRUD
-users
-  CRUD
-  login / logout
-orders
-  CRUD
+# Screens
 
-shopping cart
+- ProductsScreen
+- ProductScreen
+- LoginScreen 
+- RegisterScreen 
+- CartScreen 
+- ShippingScreen 
+- PaymentScreen 
+- PlaceOrderScreen 
+- OrderScreen 
+- MyOrdersScreen 
 
-Auth
-  protected routes
-  admin privleges
+### dependencies
+
+
+client
+- react-router-dom
+- styled-components
+- redux
+- jest / react-testing-library
