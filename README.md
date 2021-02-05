@@ -21,3 +21,6 @@ client
 - styled-components
 - redux
 - jest / react-testing-library
+- redux thunk
+- redux-devtools-extensions
+- react-redux

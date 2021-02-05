@@ -20,7 +20,7 @@ const products = [
 	{
 		name: 'French Fries',
 		category: 'Sides',
-		image: '/images/french-frys.jpg',
+		image: '/images/frenchfries.jpg',
 		price: 2.25,
 	},
 	{

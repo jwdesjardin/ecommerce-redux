@@ -1,26 +1,62 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import styled from 'styled-components';
 import HeaderImage from '../components/HeaderImage';
 import ProductOption from '../components/ProductOption';
+import { useSelector, useDispatch } from 'react-redux';
+import { getProductDetails } from '../actions/productActions';
+import { addToCart } from '../actions/cartActions';
 
-const ProductScreen = () => {
-	const [ options, setOptions ] = useState({});
+const ProductScreen = ({ match }) => {
+	const [ qty, setQty ] = useState(1);
+
+	const id = match.params.id;
+
+	const dispatch = useDispatch();
+
+	const productDetails = useSelector(state => state.productDetails);
+	const { loading, data, error } = productDetails;
+
+	useEffect(
+		() => {
+			dispatch(getProductDetails(id));
+		},
+		[ dispatch, id ]
+	);
+
+	const addToCartHandler = e => {
+		const id = e.target.value;
+		dispatch(addToCart(id, Number(qty)));
+	};
+
+	console.log(data, Number(qty));
 
 	return (
 		<ProductScreenContainer>
-			<HeaderImage />
-			<ProductTitle>CheeseBurger</ProductTitle>
-
-			<AddToCartButton>Add to Cart</AddToCartButton>
+			{data && (
+				<Fragment>
+					<HeaderImage image={data.image} />
+					<ProductTitle>{data.name}</ProductTitle>
+					<select value={qty} onChange={e => setQty(e.target.value)}>
+						{[ ...Array(data.countInStock).keys() ].map(x => (
+							<option key={x + 1} value={x + 1}>
+								{x + 1}
+							</option>
+						))}
+					</select>
+					<AddToCartButton value={data._id} onClick={addToCartHandler}>
+						Add to Cart
+					</AddToCartButton>
+				</Fragment>
+			)}
 		</ProductScreenContainer>
 	);
 };
 
 const ProductScreenContainer = styled.div`margin-top: 3.5rem;`;
-const ProductOptionsList = styled.div`
-	display: flex;
-	flex-direction: column;
-`;
+// const ProductOptionsList = styled.div`
+// 	display: flex;
+// 	flex-direction: column;
+// `;
 
 const ProductTitle = styled.h2`font-size: 1.5rem;`;
 

@@ -2,17 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const Product = () => {
+const Product = ({ product }) => {
+	console.log(product);
 	return (
-		<Link to='/product/1'>
+		<Link to={`/product/${product._id}`}>
 			<ProductContainer>
 				<Split>
 					<div>
-						<ProductImage src='/images/cheeseburger.jpg' alt='cheeseburger' />
+						<ProductImage src={product.image} alt='cheeseburger' />
 					</div>
 					<div>
-						<ProductTitle>Hamburger</ProductTitle>
-						<ProductPrice>$3.99</ProductPrice>
+						<ProductTitle>{product.name}</ProductTitle>
+						<ProductPrice>${product.price.toFixed(2)}</ProductPrice>
 					</div>
 				</Split>
 			</ProductContainer>
@@ -22,7 +23,10 @@ const Product = () => {
 
 const ProductPrice = styled.p`font-style: italic;`;
 
-const ProductTitle = styled.h4`font-weight: 400;`;
+const ProductTitle = styled.h4`
+	font-weight: 400;
+	font-size: .8rem;
+`;
 
 const ProductImage = styled.img`
 	height: 4rem;
@@ -30,15 +34,17 @@ const ProductImage = styled.img`
 	border-radius: 50%;
 	margin-right: .5rem;
 `;
+
 const ProductContainer = styled.div`
 	border: 2px solid #333;
-	padding: .5rem;
+	padding: .3rem;
 	border-radius: 8px;
+	margin: .2rem;
 `;
+
 const Split = styled.div`
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
 `;
 
 export default Product;

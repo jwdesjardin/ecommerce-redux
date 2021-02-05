@@ -1,16 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import img from '../images/cheeseburger.jpg';
 
-const HeaderImage = () => {
+const HeaderImage = ({ image }) => {
+	const HeaderImageDiv = styled.div`
+		width: 100vw;
+		height: 25vh;
+		overflow: hidden;
+		background: url(${image}) no-repeat center / cover;
+	`;
+
 	return <HeaderImageDiv />;
 };
-
-const HeaderImageDiv = styled.div`
-	width: 100vw;
-	height: 25vh;
-	overflow: hidden;
-	background: url(${img}) no-repeat center / cover;
-`;
 
 export default HeaderImage;
