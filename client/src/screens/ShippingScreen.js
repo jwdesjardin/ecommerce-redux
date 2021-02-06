@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { register } from '../actions/userActions';
+import { saveShippingAddress } from '../actions/cartActions';
 
 const ShippingScreen = ({ location, history }) => {
 	const dispatch = useDispatch();
@@ -12,31 +12,27 @@ const ShippingScreen = ({ location, history }) => {
 	const [ city, setCity ] = useState('');
 	const [ state, setState ] = useState('');
 	const [ zipcode, setZipcode ] = useState('');
-
-	const userLogin = useSelector(state => state.userLogin);
-	const { loading, error, userInfo } = userLogin;
-
-	const redirect = location.search ? location.search.split('=')[1] : '/';
-
-	useEffect(
-		() => {
-			if (userInfo) {
-				history.push(redirect);
-			}
-		},
-		[ history, userInfo, redirect ]
-	);
+	const [ error, setError ] = useState('');
 
 	const saveShippingHandler = e => {
 		e.preventDefault();
+		if (address !== '' && city !== '' && zipcode !== '' && state !== '') {
+			dispatch(saveShippingAddress({ address, city, state, zipcode }));
+			history.push('/placeorder');
+		} else {
+			setError('please fill in all fields');
+			setTimeout(() => {
+				setError('');
+			}, 5000);
+		}
 	};
 
 	return (
-		<RegisterScreenContainer>
+		<ScreenContainer>
 			<h1>Delivery Address</h1>
 			{error && <ErrorMessage variant='danger'>{error}</ErrorMessage>}
-			{loading && <h2>Loading...</h2>}
-			<RegisterForm onSubmit={saveShippingHandler}>
+
+			<Form onSubmit={saveShippingHandler}>
 				<InputLabel htmlFor='address'>Address</InputLabel>
 				<TextInput
 					value={address}
@@ -74,12 +70,12 @@ const ShippingScreen = ({ location, history }) => {
 				/>
 
 				<SubmitButton type='submit'>Choose Payment Method</SubmitButton>
-			</RegisterForm>
-		</RegisterScreenContainer>
+			</Form>
+		</ScreenContainer>
 	);
 };
 
-const RegisterScreenContainer = styled.div`
+const ScreenContainer = styled.div`
 	margin-top: 8rem;
 	display: flex;
 	flex-direction: column;
@@ -88,7 +84,7 @@ const RegisterScreenContainer = styled.div`
 	width: 100vw;
 `;
 
-const RegisterForm = styled.form`
+const Form = styled.form`
 	display: flex;
 	flex-direction: column;
 	font-size: 1.1rem;

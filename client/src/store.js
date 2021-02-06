@@ -10,6 +10,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { productListReducer, productDetailsReducer } from './reducers/productReducers';
 import { cartReducer } from './reducers/cartReducers';
 import { userLoginReducer, userRegisterReducer } from './reducers/userReducers';
+import { orderCreateReducer } from './reducers/orderReducer';
 
 // combine multiple reducers
 const reducer = combineReducers({
@@ -18,28 +19,29 @@ const reducer = combineReducers({
 	shoppingCart: cartReducer,
 	userLogin: userLoginReducer,
 	userRegister: userRegisterReducer,
+	orderCreate: orderCreateReducer,
 });
 
 const cartItemsFromStorage = localStorage.getItem('cartItems')
 	? JSON.parse(localStorage.getItem('cartItems'))
 	: [];
 
-// const userInfoFromStorage = localStorage.getItem('userInfo')
-// 	? JSON.parse(localStorage.getItem('userInfo'))
-// 	: null;
+const userInfoFromStorage = localStorage.getItem('userInfo')
+	? JSON.parse(localStorage.getItem('userInfo'))
+	: null;
 
-// const shippingAddressFromStorage = localStorage.getItem('shippingAddress')
-// 	? JSON.parse(localStorage.getItem('shippingAddress'))
-// 	: {};
+const shippingAddressFromStorage = localStorage.getItem('shippingAddress')
+	? JSON.parse(localStorage.getItem('shippingAddress'))
+	: {};
 
 const initialState = {
 	shoppingCart: {
 		cartItems: cartItemsFromStorage,
-		// shippingAddress: shippingAddressFromStorage
+		shippingAddress: shippingAddressFromStorage,
 	},
-	// userLogin: {
-	// 	userInfo: userInfoFromStorage
-	// }
+	userLogin: {
+		userInfo: userInfoFromStorage,
+	},
 };
 
 // allows async actions

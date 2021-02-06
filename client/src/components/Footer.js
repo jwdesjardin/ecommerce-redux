@@ -9,7 +9,7 @@ const FooterDiv = styled.div`
 	background-color: #333;
 	height: 2rem;
 	width: 100%;
-	position: absolute;
+	position: fixed;
 	bottom: 0;
 `;
 export default Footer;

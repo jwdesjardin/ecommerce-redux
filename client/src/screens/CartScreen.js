@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { removeFromCart } from '../actions/cartActions';
+import { Table } from 'react-bootstrap';
 
 const CartScreen = () => {
 	const shoppingCart = useSelector(state => state.shoppingCart);
@@ -14,31 +15,31 @@ const CartScreen = () => {
 		<CartScreenContainer>
 			<CartContainer>
 				<h2>Cart Items</h2>
-				<Table>
-					<thead>
-						<th>Item</th>
-						<th>Qty</th>
-						<th>Remove</th>
-					</thead>
+				<Table striped>
 					<tbody>
+						<tr>
+							<th>Item</th>
+							<th>Price</th>
+							<th>Qty</th>
+							<th>Remove</th>
+						</tr>
 						{cartItems &&
 							cartItems.map(item => (
-								<TR key={item.product}>
+								<tr key={item.product}>
 									<td>
-										<Link to={`/products/${item.product}`}>
-											<ItemImage src={item.image} alt='cheeseburger' />
-										</Link>
+										<ItemImage src={item.image} alt='cheeseburger' />
 
 										<Link to={`/products/${item.product}`}>{item.name}</Link>
 									</td>
-									<TDCenter>{item.qty}</TDCenter>
-									<TDCenter>
+									<td>{item.price}</td>
+									<td>{item.qty}</td>
+									<td>
 										<Times
 											onClick={() => dispatch(removeFromCart(item.product))}
 											className='fas fa-times'
 										/>
-									</TDCenter>
-								</TR>
+									</td>
+								</tr>
 							))}
 					</tbody>
 				</Table>
@@ -55,7 +56,7 @@ const CartScreenContainer = styled.div`margin-top: 3.7rem;`;
 
 const CartContainer = styled.div`
 	border: 2px soild black;
-	margin: .5rem;
+	margin: 1rem;
 `;
 
 const ShippingButton = styled.button`
@@ -63,16 +64,12 @@ const ShippingButton = styled.button`
 	padding: .2rem .5rem;
 	background-color: transparent;
 `;
-
 const ItemImage = styled.img`
 	width: 3rem;
 	height: 3rem;
 	border-radius: 50%;
 	margin-right: .5rem;
 `;
-const TDCenter = styled.td`text-align: center;`;
-const TR = styled.tr`align-items: center;`;
-const Table = styled.table`width: 100%;`;
 const Times = styled.i`color: red;`;
 
 export default CartScreen;
