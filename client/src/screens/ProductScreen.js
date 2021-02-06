@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getProductDetails } from '../actions/productActions';
 import { addToCart } from '../actions/cartActions';
 
-const ProductScreen = ({ match }) => {
+const ProductScreen = ({ match, history }) => {
 	const [ qty, setQty ] = useState(1);
 
 	const id = match.params.id;
@@ -26,6 +26,7 @@ const ProductScreen = ({ match }) => {
 	const addToCartHandler = e => {
 		const id = e.target.value;
 		dispatch(addToCart(id, Number(qty)));
+		history.push('/');
 	};
 
 	console.log(data, Number(qty));

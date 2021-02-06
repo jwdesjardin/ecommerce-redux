@@ -76,7 +76,7 @@ const ShippingScreen = ({ location, history }) => {
 };
 
 const ScreenContainer = styled.div`
-	margin-top: 8rem;
+	margin-top: 5rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;

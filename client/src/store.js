@@ -10,7 +10,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { productListReducer, productDetailsReducer } from './reducers/productReducers';
 import { cartReducer } from './reducers/cartReducers';
 import { userLoginReducer, userRegisterReducer } from './reducers/userReducers';
-import { orderCreateReducer } from './reducers/orderReducer';
+import {
+	orderCreateReducer,
+	orderDetailsReducer,
+	orderListMyReducer,
+	orderPayReducer,
+} from './reducers/orderReducer';
 
 // combine multiple reducers
 const reducer = combineReducers({
@@ -20,6 +25,10 @@ const reducer = combineReducers({
 	userLogin: userLoginReducer,
 	userRegister: userRegisterReducer,
 	orderCreate: orderCreateReducer,
+	orderDetails: orderDetailsReducer,
+	myOrders: orderListMyReducer,
+	orderPay: orderPayReducer,
+	orderDeliver: orderDetailsReducer,
 });
 
 const cartItemsFromStorage = localStorage.getItem('cartItems')

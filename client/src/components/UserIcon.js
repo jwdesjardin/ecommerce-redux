@@ -31,14 +31,19 @@ const UserIcon = () => {
 				<Dropdown>
 					<DropdownList>
 						<DropdownHeader>{userInfo.name}</DropdownHeader>
-						<ListItem onClick={logoutHandler}>logout</ListItem>
+						<Link to='/'>
+							<ListItem onClick={logoutHandler}>logout</ListItem>
+						</Link>
+						<Link to='myorders'>
+							<ListItem>myOrders</ListItem>
+						</Link>
 					</DropdownList>
 				</Dropdown>
 			) : (
 				<Dropdown>
 					<DropdownList>
 						<Link to='/login'>
-							<ListItem onClick={logoutHandler}>login</ListItem>
+							<ListItem>login</ListItem>
 						</Link>
 					</DropdownList>
 				</Dropdown>
