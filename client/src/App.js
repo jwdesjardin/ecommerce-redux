@@ -20,7 +20,7 @@ function App() {
 			<Header />
 
 			<Switch>
-				{/* <Route path='/' render={() => <Redirect to='/products' />} /> */}
+				<Route exact path='/' render={() => <Redirect to='/products' />} />
 				<Route path='/products' component={ProductsScreen} />
 				<Route path='/product/:id' component={ProductScreen} />
 				<Route path='/login' component={LoginScreen} />

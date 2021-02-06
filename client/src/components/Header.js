@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import UserIcon from './UserIcon';
 
 const Header = () => {
 	const shoppingCart = useSelector(state => state.shoppingCart);
@@ -11,14 +12,16 @@ const Header = () => {
 
 	return (
 		<HeaderDiv>
+			<UserIcon />
+
 			<Link to='/products'>
-				<h2>Burgz N' Shakes</h2>
+				<HeaderTitle>Burgz N' Shakes</HeaderTitle>
 			</Link>
 
 			<ShoppingCartDiv>
 				{shoppingCartCount > 0 ? <CartItemCounter>{shoppingCartCount}</CartItemCounter> : ''}
 				<Link to='/cart'>
-					<i className='fas fa-shopping-cart' />
+					<HeaderIcon className='fas fa-shopping-cart fa-2x' />
 				</Link>
 			</ShoppingCartDiv>
 		</HeaderDiv>
@@ -27,7 +30,7 @@ const Header = () => {
 
 const HeaderDiv = styled.div`
 	width: 100%;
-	min-height: 3rem;
+	min-height: 4rem;
 	background-color: #333;
 	color: #ebebeb;
 	position: absolute;
@@ -37,21 +40,37 @@ const HeaderDiv = styled.div`
 	justify-content: center;
 	align-items: center;
 `;
+const HeaderTitle = styled.h1`
+	color: white;
+	font-size: 1.5rem;
+`;
+
+const HeaderIcon = styled.i`color: white;`;
 
 const ShoppingCartDiv = styled.div`
-	float: right;
 	position: absolute;
 	right: 0;
 	top: 0;
 	padding: .5rem;
-	font-size: 1.4rem;
 	display: flex;
+	margin: .5rem 1rem;
+`;
+
+const UserInfoDiv = styled.div`
+	position: absolute;
+	left: 0;
+	top: 0;
+	padding: .5rem;
+	margin: .5rem 1rem;
 `;
 
 const CartItemCounter = styled.div`
 	background-color: yellow;
+	font-size: .8rem;
+	font-weight: bold;
 	border-radius: 50%;
 	color: black;
+	max-height: 1.5rem;
 	padding: .2rem .5rem;
 `;
 

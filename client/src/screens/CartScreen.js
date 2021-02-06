@@ -43,7 +43,9 @@ const CartScreen = () => {
 					</tbody>
 				</Table>
 
-				<ShippingButton>Add Shipping</ShippingButton>
+				<Link to='/shipping'>
+					<ShippingButton>Add Shipping</ShippingButton>
+				</Link>
 			</CartContainer>
 		</CartScreenContainer>
 	);

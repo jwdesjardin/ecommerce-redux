@@ -9,12 +9,15 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 //bring in redusers
 import { productListReducer, productDetailsReducer } from './reducers/productReducers';
 import { cartReducer } from './reducers/cartReducers';
+import { userLoginReducer, userRegisterReducer } from './reducers/userReducers';
 
 // combine multiple reducers
 const reducer = combineReducers({
 	productList: productListReducer,
 	productDetails: productDetailsReducer,
 	shoppingCart: cartReducer,
+	userLogin: userLoginReducer,
+	userRegister: userRegisterReducer,
 });
 
 const cartItemsFromStorage = localStorage.getItem('cartItems')
