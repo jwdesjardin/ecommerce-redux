@@ -54,10 +54,6 @@ const ProductScreen = ({ match, history }) => {
 };
 
 const ProductScreenContainer = styled.div`margin-top: 3.5rem;`;
-// const ProductOptionsList = styled.div`
-// 	display: flex;
-// 	flex-direction: column;
-// `;
 
 const ProductTitle = styled.h2`font-size: 1.5rem;`;
 

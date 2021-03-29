@@ -43,8 +43,10 @@ const MyOrdersScreen = ({ match }) => {
 							</tr>
 							{data.map(order => (
 								<tr key={order._id}>
-									<td>{order._id}</td>
-									<td>{order.totalPrice}</td>
+									<td>
+										<Link to={`/order/${order._id}`}>{order._id}</Link>
+									</td>
+									<td>${order.totalPrice}</td>
 									<td>
 										{order.isPaid ? (
 											<IconGreen className='fas fa-check-circle' />

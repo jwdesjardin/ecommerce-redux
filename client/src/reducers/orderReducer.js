@@ -19,10 +19,11 @@ import {
 	ORDER_DELIVER_REQUEST,
 } from '../actions/constants';
 
-export const orderCreateReducer = (state = {}, action) => {
+export const orderCreateReducer = (state = { order: { _id: null } }, action) => {
 	switch (action.type) {
 		case ORDER_CREATE_REQUEST:
 			return {
+				...state,
 				loading: true,
 			};
 		case ORDER_CREATE_SUCCESS:

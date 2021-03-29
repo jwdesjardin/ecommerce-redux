@@ -34,7 +34,7 @@ const LoginScreen = ({ location, history }) => {
 		<LoginScreenContainer>
 			{error && <ErrorMessage variant='danger'>{error}</ErrorMessage>}
 			{loading && <h2>Loading...</h2>}
-			<LoginForm onSubmit={loginHandler}>
+			<LoginForm onSubmit={loginHandler} data-testid='login-form'>
 				<InputLabel htmlFor='email'>Email</InputLabel>
 				<TextInput
 					value={email}

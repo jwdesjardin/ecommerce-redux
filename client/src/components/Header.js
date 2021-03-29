@@ -14,7 +14,7 @@ const Header = () => {
 		<HeaderDiv>
 			<UserIcon />
 
-			<Link to='/products'>
+			<Link to='/products' data-testid='header title'>
 				<HeaderTitle>Burgz N' Shakes</HeaderTitle>
 			</Link>
 

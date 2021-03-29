@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Table } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { createOrder } from '../actions/orderActions';
+import { emptyShoppingCart } from '../actions/cartActions';
 
 const PlaceOrderScreen = ({ history }) => {
 	const dispatch = useDispatch();
@@ -19,15 +20,14 @@ const PlaceOrderScreen = ({ history }) => {
 	}
 
 	const [ paymentMethod, setPaymentMethod ] = useState('Paypal');
-
+	console.log(success, order);
 	useEffect(
 		() => {
 			if (success) {
 				history.push(`/order/${order._id}`);
 			}
-			// eslint-disable-next-line
 		},
-		[ history, success ]
+		[ history, success, order._id ]
 	);
 
 	const placeOrderHandler = e => {
@@ -43,6 +43,7 @@ const PlaceOrderScreen = ({ history }) => {
 				totalPrice: cart.totalPrice,
 			})
 		);
+		dispatch(emptyShoppingCart());
 	};
 
 	//calculate prices

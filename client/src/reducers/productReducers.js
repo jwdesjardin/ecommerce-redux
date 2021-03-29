@@ -7,17 +7,17 @@ import {
 	PRODUCT_DETAILS_FAIL,
 } from '../actions/constants';
 
-export const productListReducer = (state = { data: [] }, action) => {
+export const productListReducer = (state = { data: null }, action) => {
 	switch (action.type) {
 		case PRODUCT_LIST_REQUEST:
-			return { loading: true };
+			return { ...state, loading: true };
 		case PRODUCT_LIST_SUCCESS:
 			return {
-				loading: false,
 				data: action.payload.products,
+				loading: false,
 			};
 		case PRODUCT_LIST_FAIL:
-			return { loading: false, error: action.payload };
+			return { error: action.payload, loading: false };
 		default:
 			return state;
 	}
@@ -26,14 +26,14 @@ export const productListReducer = (state = { data: [] }, action) => {
 export const productDetailsReducer = (state = { data: {} }, action) => {
 	switch (action.type) {
 		case PRODUCT_DETAILS_REQUEST:
-			return { loading: true };
+			return { ...state, loading: true };
 		case PRODUCT_DETAILS_SUCCESS:
 			return {
-				loading: false,
 				data: action.payload,
+				loading: false,
 			};
 		case PRODUCT_DETAILS_FAIL:
-			return { loading: false, error: action.payload };
+			return { error: action.payload, loading: false };
 		default:
 			return state;
 	}

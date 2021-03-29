@@ -34,7 +34,7 @@ const UserIcon = () => {
 						<Link to='/'>
 							<ListItem onClick={logoutHandler}>logout</ListItem>
 						</Link>
-						<Link to='myorders'>
+						<Link to='/myorders'>
 							<ListItem>myOrders</ListItem>
 						</Link>
 					</DropdownList>

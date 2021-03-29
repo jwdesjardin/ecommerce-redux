@@ -72,7 +72,7 @@ const OrderScreen = ({ match, history }) => {
 		dispatch(deliverOrder(data));
 	};
 
-	console.log(sdkReady);
+	console.log(data);
 
 	return (
 		<ScreenContainer>
