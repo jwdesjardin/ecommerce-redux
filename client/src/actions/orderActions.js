@@ -14,7 +14,7 @@ import {
 	ORDER_DELIVER_SUCCESS,
 	ORDER_DELIVER_FAIL,
 	ORDER_DELIVER_REQUEST,
-	CART_RESET,
+	
 } from './constants';
 
 import axios from 'axios';

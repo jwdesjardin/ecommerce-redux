@@ -61,13 +61,7 @@ const Form = styled.form`
 	font-size: 1.1rem;
 	margin: 1rem;
 `;
-const InputLabel = styled.label``;
-const TextInput = styled.input`
-	padding: .4rem .5rem;
-	margin: .5rem;
-	border-radius: 5px;
-	border: 1px solid #777;
-`;
+
 const SubmitButton = styled.button`
 	border: 2px solid green;
 	background-color: transparent;
@@ -76,12 +70,6 @@ const SubmitButton = styled.button`
 	margin-top: 1rem;
 `;
 
-const ErrorMessage = styled.div`
-	border: 1px solid red;
-	background-color: rgba(255, 0, 0, .3);
-	border-radius: .3rem;
-	padding: .5rem;
-	width: 90%;
-`;
+
 
 export default PaymentScreen;

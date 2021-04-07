@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import UserIcon from './UserIcon';
 
 const Header = () => {
@@ -53,14 +53,6 @@ const ShoppingCartDiv = styled.div`
 	top: 0;
 	padding: .5rem;
 	display: flex;
-	margin: .5rem 1rem;
-`;
-
-const UserInfoDiv = styled.div`
-	position: absolute;
-	left: 0;
-	top: 0;
-	padding: .5rem;
 	margin: .5rem 1rem;
 `;
 

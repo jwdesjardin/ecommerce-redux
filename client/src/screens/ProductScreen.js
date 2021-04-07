@@ -1,7 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import styled from 'styled-components';
 import HeaderImage from '../components/HeaderImage';
-import ProductOption from '../components/ProductOption';
 import { useSelector, useDispatch } from 'react-redux';
 import { getProductDetails } from '../actions/productActions';
 import { addToCart } from '../actions/cartActions';
@@ -14,7 +13,7 @@ const ProductScreen = ({ match, history }) => {
 	const dispatch = useDispatch();
 
 	const productDetails = useSelector(state => state.productDetails);
-	const { loading, data, error } = productDetails;
+	const { data } = productDetails;
 
 	useEffect(
 		() => {
