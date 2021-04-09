@@ -32,8 +32,10 @@ const ProductsScreen = () => {
 };
 
 const ProductsScreenContainer = styled.div`
-	margin-top: 3.5rem;
+	margin: 3.5rem auto;
 	padding: .5rem;
+	max-width: 65rem;
+	
 `;
 
 const ProductsGrid = styled.div`

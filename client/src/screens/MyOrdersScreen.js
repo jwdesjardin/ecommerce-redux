@@ -76,10 +76,16 @@ const MyOrdersScreen = ({ match }) => {
 	);
 };
 
-const ScreenContainer = styled.div`margin: 4rem .5rem 1rem .5rem;`;
+const ScreenContainer = styled.div`
+margin: 4rem auto;
+max-width: 65rem;
+
+`;
+
 const TableContainer = styled.div`
 	overflow: scroll;
 	max-width: 1200px;
+	margin: .5rem;
 `;
 const PageTitle = styled.h2`font-size: 1.5rem;`;
 const IconRed = styled.i`color: red;`;

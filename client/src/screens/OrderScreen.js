@@ -163,10 +163,12 @@ const OrderScreen = ({ match, history }) => {
 };
 
 const ScreenContainer = styled.div`margin: 4.5rem .5rem 3rem;`;
+
 const Container = styled.div`
 	max-width: 75rem;
 	margin: 0 auto;
 `;
+
 const Section = styled.div`margin: 2rem 0;`;
 const PageTitle = styled.h2`font-size: 1.5rem;`;
 const ErrorMessage = styled.div`

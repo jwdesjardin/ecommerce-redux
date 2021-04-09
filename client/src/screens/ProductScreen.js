@@ -35,6 +35,7 @@ const ProductScreen = ({ match, history }) => {
 			{data && (
 				<Fragment>
 					<HeaderImage image={data.image} />
+					<ContentContainer>
 					<ProductTitle>{data.name}</ProductTitle>
 					<select value={qty} onChange={e => setQty(e.target.value)}>
 						{[ ...Array(data.countInStock).keys() ].map(x => (
@@ -46,13 +47,23 @@ const ProductScreen = ({ match, history }) => {
 					<AddToCartButton value={data._id} onClick={addToCartHandler}>
 						Add to Cart
 					</AddToCartButton>
+					</ContentContainer>
+				
 				</Fragment>
 			)}
 		</ProductScreenContainer>
 	);
 };
 
-const ProductScreenContainer = styled.div`margin-top: 3.5rem;`;
+const ProductScreenContainer = styled.div`
+	margin-top: 4rem;
+`;
+
+const ContentContainer = styled.div`
+	max-width: 65rem;
+	margin: auto;
+	padding: 2rem 0
+`;
 
 const ProductTitle = styled.h2`font-size: 1.5rem;`;
 
@@ -62,7 +73,7 @@ const AddToCartButton = styled.button`
 	background-color: transparent;
 	padding: .3rem;
 	border-radius: 5px;
-	margin-top: .5rem;
+	margin: .5rem;
 `;
 
 export default ProductScreen;
