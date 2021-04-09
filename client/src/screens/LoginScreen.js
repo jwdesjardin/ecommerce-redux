@@ -58,7 +58,7 @@ const LoginScreen = ({ location, history }) => {
 
 			<RegisterDiv>
 				<RegisterText>
-					If you do not already have an account <Link to='/register'>click here </Link>to register.
+					If you do not already have an account <Link to={redirect !== '/' ? `/register?redirect=${redirect}` : '/register' }>click here </Link>to register.
 				</RegisterText>
 			</RegisterDiv>
 		</LoginScreenContainer>

@@ -13,6 +13,9 @@ const PlaceOrderScreen = ({ history }) => {
 	const orderCreate = useSelector(state => state.orderCreate);
 	const { order, success, error } = orderCreate;
 
+	const userLogin = useSelector(state => state.userLogin);
+	const { userInfo } = userLogin;
+
 	if (!cart.shippingAddress) {
 		console.log('no shipping');
 		history.push('/shipping');
@@ -22,6 +25,9 @@ const PlaceOrderScreen = ({ history }) => {
 	console.log(success, order);
 	useEffect(
 		() => {
+			if (!userInfo) {
+				history.push('login?redirect=placeorder');
+			}
 			if (success) {
 				history.push(`/order/${order._id}`);
 			}
